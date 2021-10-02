@@ -23,24 +23,6 @@ if(Timer.innerHTML <= 50){
 
 animatedLogo()
 
-// function stopLogo() {
-//     Timer.innerHTML = 100
-// }
-
-// if(Timer.innerHTML <= 100){
-//     animatedLogo()
-// }else if(Timer.innerHTML == 101){
-    
-// }
-
-
-
-
-
-
-
-
-
 
 const product = {
     plainBurger: {
@@ -132,6 +114,43 @@ function plusOrminus(element) {
     }
 
     productAmount.innerHTML = product[parentId].amount;
+}
+
+
+
+const burgerTitle = document.querySelectorAll('.main__product-title');
+    
+
+burgerTitle.forEach(function (element) {
+    element.addEventListener('dblclick', function (){
+        whichImg (this);
+    })
+})
+
+
+function whichImg (element) {
+    const view = document.querySelector('.view'),
+        img = view.querySelector('img'),
+        closeBtn = document.querySelector('.view__close'),
+        parent = element.closest('.main__product'),
+        burgerId = parent.getAttribute('id');
+    
+
+    view.style.display = 'flex';
+
+    img.style.margin = 'auto';
+
+    if(burgerId == 'plainBurger') {
+        img.src = `images/product2.jpg`;
+    }else if(burgerId == 'freshBurger'){
+        img.src = `images/product1.jpg`;
+    } else {
+        img.src = `images/product3.jpg`;
+    }
+
+    closeBtn.addEventListener('click', () =>{
+        view.style.display = 'none';
+    })
 }
 
 
